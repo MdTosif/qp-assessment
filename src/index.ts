@@ -7,6 +7,11 @@ import signupRouter from './routes/auth/singup';
 const app = express();
 const port = 3000;
 
+// Middleware for parsing JSON bodies
+app.use(express.json());
+
+// Middleware for parsing URL-encoded bodies
+app.use(express.urlencoded({ extended: true }));
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec)); // Swagger UI endpoint
 

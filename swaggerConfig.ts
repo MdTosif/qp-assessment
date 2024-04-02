@@ -10,7 +10,7 @@ const options: swaggerJsdoc.Options = {
         },
     },
     // Paths to files containing OpenAPI definitions
-    apis: ['./src/routes/*.ts'],
+    apis: ['./src/routes/**/*.ts'],
 };
 
 export default swaggerJsdoc(options);
