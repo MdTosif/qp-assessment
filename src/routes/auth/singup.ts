@@ -1,9 +1,19 @@
 import express, { Router, Request, Response } from 'express';
 
-const router: Router = express.Router();
+const signupRouter: Router = express.Router();
 
-router.post('/auth/signup', (req: Request, res: Response) => {
+/**
+ * @swagger
+ * /hello:
+ *   get:
+ *     summary: Returns a hello message
+ *     responses:
+ *       200:
+ *         description: Hello message
+ */
+
+signupRouter.post('/signup', (req: Request, res: Response) => {
     res.send('Hello from the router!');
 });
 
-export default router;
+export default signupRouter;

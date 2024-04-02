@@ -1,7 +1,17 @@
 import express, { Request, Response } from 'express';
+import swaggerUi from 'swagger-ui-express';
+import swaggerSpec from '../swaggerConfig'; // Import the Swagger configuration
+import signinRouter from './routes/auth/signin';
+import signupRouter from './routes/auth/singup';
 
 const app = express();
 const port = 3000;
+
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec)); // Swagger UI endpoint
+
+app.use("/auth", signinRouter)
+app.use("/auth", signupRouter)
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!');
