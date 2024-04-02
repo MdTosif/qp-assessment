@@ -11,7 +11,9 @@ type JwtPayload = {
 
 // Function to generate JWT token
 export function generateToken(payload: JwtPayload | string): string {
-    return jwt.sign(payload, secretKey);
+    return jwt.sign(payload, secretKey, {
+        expiresIn: '7d',
+    });
 }
 
 // Function to verify and decode JWT token
