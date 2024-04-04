@@ -10,6 +10,7 @@ import { prismaClient } from './utils/db';
 import getGroceryRouter from './routes/grocery/get';
 import updateGroceryRouter from './routes/grocery/update';
 import deleteGroceryRouter from './routes/grocery/delete';
+import addOrderRouter from './routes/order/add';
 
 const app = express();
 const port = 3000;
@@ -26,6 +27,7 @@ app.use('/auth', signinRouter);
 app.use('/auth', signupRouter);
 app.use(authenticateToken);
 app.use('/grocery', getGroceryRouter);
+app.use('/order', addOrderRouter);
 
 app.use(isAdmin);
 app.use('/grocery', updateGroceryRouter);
