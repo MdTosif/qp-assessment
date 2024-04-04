@@ -7,6 +7,9 @@ import addGroceryRouter from './routes/grocery/add';
 import { authenticateToken } from './middleware/auth';
 import { isAdmin } from './middleware/is-admin';
 import { prismaClient } from './utils/db';
+import getGroceryRouter from './routes/grocery/get';
+import updateGroceryRouter from './routes/grocery/update';
+import deleteGroceryRouter from './routes/grocery/delete';
 
 const app = express();
 const port = 3000;
@@ -22,9 +25,12 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec)); // Swagger 
 app.use('/auth', signinRouter);
 app.use('/auth', signupRouter);
 app.use(authenticateToken);
+app.use('/grocery', getGroceryRouter);
 
 app.use(isAdmin);
+app.use('/grocery', updateGroceryRouter);
 app.use('/grocery', addGroceryRouter);
+app.use('/grocery', deleteGroceryRouter);
 
 app.get('/', (req: Request, res: Response) => {
     res.send('Hello World!');
