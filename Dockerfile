@@ -1,5 +1,5 @@
 # Use Node.js as base image
-FROM node:14
+FROM node:19-bullseye
 
 # Set the working directory in the container
 WORKDIR /usr/src/app
